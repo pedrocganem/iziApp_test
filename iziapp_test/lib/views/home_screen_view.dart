@@ -15,38 +15,37 @@ class _HomeScreenState extends State<HomeScreen> {
       resizeToAvoidBottomPadding: false,
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       body: Stack(children: [
-        Image.asset('assets/background.png',
-            filterQuality: FilterQuality.high,
-            colorBlendMode: BlendMode.saturation,
-            height: double.infinity,
-            width: double.infinity,
-            fit: BoxFit.none
-            // fit: BoxFit.cover,
-            ),
         Container(
           height: double.infinity,
           width: double.infinity,
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-            colors: [Colors.white, Colors.transparent],
-            begin: Alignment.center,
-            end: Alignment.bottomCenter,
-            stops: [0.1, 1.0],
-          )),
+            image: DecorationImage(
+                image: AssetImage('assets/background.png'), fit: BoxFit.cover),
+          ),
+        ),
+        Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.white, Colors.white.withOpacity(0.0)],
+              begin: FractionalOffset.topCenter,
+              end: FractionalOffset.bottomCenter,
+              stops: [0.54, 1.0],
+            ),
+          ),
         ),
         Positioned(
-          top: pHeight(550),
+          top: pHeight(525),
           left: pWidth(75),
           child: Image.asset(
             'assets/logo.png',
-            scale: 2.5,
+            scale: 2.1,
           ),
         ),
         Positioned(
           top: pHeight(70),
           left: pWidth(25),
           child: Text(
-            'Ola!',
+            'Olá!',
             textAlign: TextAlign.start,
             style: Theme.of(context).textTheme.headline6,
           ),
@@ -55,31 +54,78 @@ class _HomeScreenState extends State<HomeScreen> {
           left: pWidth(25),
           top: pHeight(117),
           child: Text(
-            'Esta pronto para mudar sua vida?',
+            'Está pronto para mudar sua vida?',
             textAlign: TextAlign.start,
+            style: Theme.of(context).textTheme.bodyText1,
           ),
         ),
         Positioned(
           left: pWidth(35),
           top: pHeight(175),
-          child: Text('Seu Login'),
+          child: Text(
+            'Seu Login',
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
         ),
-        
         Positioned(
-          width: pWidth(300),
+          width: pWidth(325),
           height: pHeight(50),
           left: pWidth(25),
           top: pHeight(200),
           child: TextFormField(
-          decoration: InputDecoration(
-            hintText: 'contato@teste.com.br',
-            hintStyle: TextStyle(fontSize: 10),
-            fillColor: Colors.grey,
-            
-            border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), )
-
+            autofocus: false,
+            autocorrect: false,
+            decoration: InputDecoration(
+              enabled: true,
+              focusColor: Colors.white,
+              hoverColor: Colors.white,
+                hintText: 'contato@teste.com.br',
+                hintStyle: TextStyle(fontSize: pHeight(13)),
+                fillColor: Color(0xFFF2F2F2),
+                filled: true,
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12))
+                 ),
           ),
-        ),)
+        ),
+        Positioned(
+          left: pWidth(35),
+          top: pHeight(280),
+          child: Text(
+            'Senha',
+            style: Theme.of(context).textTheme.bodyText1,
+          ),
+        ),
+        Positioned(
+            left: pWidth(25),
+            top: pHeight(305),
+            height: pHeight(50),
+            width: pWidth(325),
+            child: TextFormField(
+            autofocus: false,
+            autocorrect: false,
+            decoration: InputDecoration(
+              enabled: true,
+                hintText: '********************',
+                hintStyle: TextStyle(fontSize: pHeight(13)),
+                fillColor: Color(0xFFF2F2F2),
+                filled: true,
+                border: OutlineInputBorder(borderRadius: BorderRadius.circular(12))
+
+                 ),
+          ),),
+        Positioned(
+            left: pWidth(25),
+            top: pHeight(385),
+            height: pHeight(55),
+            width: pWidth(325),
+            child: RaisedButton(
+              color: Colors.pink,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)),
+              onPressed: () {},
+              child: Text('Fazer login',
+                  style: Theme.of(context).textTheme.button),
+            ))
       ]),
     );
   }
